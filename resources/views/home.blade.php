@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container my-5">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+            <div class="card shadow-lg">
+                <div class="card-header bg-primary text-white">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,29 +14,31 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <p class="text-center">{{ __('You are logged in!') }}</p>
 
                     @section('content')
-                    <div class="container">
+                    <div class="container my-4">
                         <div class="row justify-content-center">
-                            <div class="col-md-8">
-                                <div class="card">
-                                    <div class="card-header">{{ __('Products') }}</div>
+                            <div class="col-md-12">
+                                <div class="card shadow">
+                                    <div class="card-header bg-secondary text-white">{{ __('Products') }}</div>
 
                                     <div class="card-body">
                                         @can('create', App\Models\Product::class)
-                                            <a href="{{ route('products.create') }}" class="btn btn-primary mb-3">Create Product</a>
+                                            <div class="d-flex justify-content-end mb-3">
+                                                <a href="{{ route('products.create') }}" class="btn btn-primary">Create Product</a>
+                                            </div>
                                         @endcan
 
-                                        <table class="table">
-                                            <thead>
+                                        <table class="table table-striped table-hover">
+                                            <thead class="thead-dark">
                                                 <tr>
-                                                    <th>Image</th>
-                                                    <th>Name</th>
-                                                    <th>Description</th>
-                                                    <th>Quantity</th>
-                                                    <th>Price</th>
-                                                    <th>Action</th>
+                                                    <th scope="col">Image</th>
+                                                    <th scope="col">Name</th>
+                                                    <th scope="col">Description</th>
+                                                    <th scope="col">Quantity</th>
+                                                    <th scope="col">Price</th>
+                                                    <th scope="col">Action</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -44,21 +46,21 @@
                                                 <tr>
                                                     <td>
                                                         @if ($product->product_image)
-                                                            <img src="{{ asset($product->product_image) }}" alt="{{ $product->name }}" width="100">
+                                                            <img src="{{ asset($product->product_image) }}" alt="{{ $product->name }}" width="100" class="img-thumbnail">
                                                         @else
-                                                            No Image
+                                                            <span class="text-muted">No Image</span>
                                                         @endif
                                                     </td>
                                                     <td>{{ $product->name }}</td>
                                                     <td>{{ $product->description }}</td>
                                                     <td>{{ $product->quantity }}</td>
                                                     <td>{{ $product->price }}</td>
-                                                    <td>
+                                                    <td class="d-flex">
                                                         @can('view', $product)
-                                                            <a href="{{ route('products.show', $product->id) }}" class="btn btn-info btn-sm">View</a>
+                                                            <a href="{{ route('products.show', $product->id) }}" class="btn btn-info btn-sm mr-2">View</a>
                                                         @endcan
                                                         @can('update', $product)
-                                                            <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary btn-sm">Edit</a>
+                                                            <a href="{{ route('products.edit', $product->id) }}" class="btn btn-primary btn-sm mr-2">Edit</a>
                                                         @endcan
                                                         @can('delete', $product)
                                                             <form action="{{ route('products.destroy', $product->id) }}" method="POST" class="d-inline">
@@ -73,8 +75,9 @@
                                             </tbody>
                                         </table>
                                     </div>
-
-
+                                    {{-- <div class="d-flex justify-content-center">
+                                        {{ $products->links() }}
+                                    </div> --}}
                                 </div>
                             </div>
                         </div>
@@ -86,4 +89,20 @@
         </div>
     </div>
 </div>
+
+<style>
+    .card {
+        margin-top: 20px;
+    }
+    .table thead th {
+        background-color: #343a40;
+        color: white;
+    }
+    .btn {
+        margin-right: 5px;
+    }
+    .container {
+        padding: 20px;
+    }
+</style>
 @endsection

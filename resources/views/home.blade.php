@@ -31,7 +31,7 @@
                                         @endcan
 
                                         <table class="table table-striped table-hover">
-                                            <thead class="thead-dark">
+                                            <thead class="thead-dark" >
                                                 <tr>
                                                     <th scope="col">Image</th>
                                                     <th scope="col">Name</th>
@@ -55,7 +55,7 @@
                                                     <td>{{ $product->description }}</td>
                                                     <td>{{ $product->quantity }}</td>
                                                     <td>{{ $product->price }}</td>
-                                                    <td class="d-flex">
+                                                    <td style="gap: 5px;" class="mt-2">
                                                         @can('view', $product)
                                                             <a href="{{ route('products.show', $product->id) }}" class="btn btn-info btn-sm mr-2">View</a>
                                                         @endcan

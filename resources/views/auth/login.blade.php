@@ -1,13 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid styless" style=" padding-top: 4.5rem !important;">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-8" style="width: 36.666667%;">
             <div class="card">
-                <div class="card-header text-center">
+                <div class="card-header text-center" style="background:rgb(164 150 150">
                     <img src="{{ asset('images/company-logo.jpg') }}" alt="Company Logo" class="img-fluid mb-3" style="max-height: 100px;">
-                    <h3>{{ __('Login') }}</h3>
+                    <h3 style="color: white;">{{ __('Login') }}</h3>
                 </div>
 
                 <div class="card-body">
@@ -73,4 +73,11 @@
         </div>
     </div>
 </div>
+
+<style>
+    .body{
+        background: grey;
+    }
+</style>
+
 @endsection

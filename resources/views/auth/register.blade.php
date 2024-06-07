@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
+<div class="container-fluid" style=" padding-top: 4.5rem !important;">
+    <div class="row justify-content-center" >
+        <div class="col-md-8" style="width: 36.666667%;">
             <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
+                <div class="card-header text-center" style="background:rgb(164 150 150">
+                    <img src="{{ asset('images/company-logo.jpg') }}" alt="Company Logo" class="img-fluid mb-3" style="max-height: 100px;">
+                    <h3 style="color: white;">{{ __('Register') }}</h3>
+                </div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">

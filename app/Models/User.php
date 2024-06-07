@@ -45,6 +45,6 @@ class User extends Authenticatable
     ];
     public function role()
 {
-    return $this->belongsTo(Role::class); // Assuming Role is the model for roles
+    return $this->belongsTo(Role::class);
 }
 }
